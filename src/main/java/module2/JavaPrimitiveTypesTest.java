@@ -110,7 +110,6 @@ String 2: This is Exercise 2
     public static String compareTwoStrings(
             String firstString,
             String secondString) {
-        int comparisonRes = firstString.compareTo(secondString);
         return "" + firstString.compareTo(secondString);
     }
 }
