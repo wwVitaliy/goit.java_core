@@ -64,7 +64,7 @@ public class QuickSort2 {
     }
 
     /**
-     * Returns an index of the last element after moving it into sorted position in the array
+     * Returns an index of a pivot element after moving it into sorted position in the array
      */
     private static int getPartitionIndex(int[] array, int lowIndex, int highIndex) {
         int pivot = array[highIndex];
