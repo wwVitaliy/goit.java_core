@@ -1,7 +1,6 @@
 package module4;
 
 import java.util.Arrays;
-import java.util.Random;
 
 /**
  * Class that tests quick sorting algorithm for array of random integers.
@@ -12,7 +11,8 @@ public class QuickSort {
     static final int ELEMENT_MAX_VAL = 20;
 
     public static void main(String[] args) {
-        int[] generatedArray = getRandomIntArray(ARRAY_MAX_LEN, ELEMENT_MAX_VAL);
+
+        int[] generatedArray = ArraysUtils.getRandomIntArray(ARRAY_MAX_LEN, ELEMENT_MAX_VAL);
         System.out.println("Generated array:");
         System.out.println(Arrays.toString(generatedArray));
 
@@ -21,26 +21,9 @@ public class QuickSort {
         System.out.println(Arrays.toString(generatedArray));
 
         System.out.println("Is the array sorted?");
-        System.out.println(isIntArraySorted(generatedArray) ? "Yes!" : "No:(");
+        System.out.println(ArraysUtils.isIntArraySorted(generatedArray) ? "Yes!" : "No:(");
     }
 
-    /**
-     * Generates array of random size filled with random positive integers.
-     *
-     * @param arrayMaxSize max size of the generated array
-     * @param elemMaxValue max value of arrays elements
-     * @return array with random integers
-     */
-    private static int[] getRandomIntArray(int arrayMaxSize, int elemMaxValue) {
-        Random random = new Random();
-        int[] numbers = new int[random.nextInt(arrayMaxSize)];
-
-        for (int i = 0; i < numbers.length; i++) {
-            numbers[i] = random.nextInt(elemMaxValue);
-        }
-
-        return numbers;
-    }
 
     /**
      * Starter method of quick search for an array
@@ -79,43 +62,15 @@ public class QuickSort {
             while (array[rightPointer] >= pivot && leftPointer < rightPointer) {
                 rightPointer--;
             }
-            swap(array, leftPointer, rightPointer);
+            ArraysUtils.swap(array, leftPointer, rightPointer);
 
         }
         if (array[leftPointer] > array[highIndex]) {
-            swap(array, leftPointer, highIndex);
+            ArraysUtils.swap(array, leftPointer, highIndex);
         } else {
             leftPointer = highIndex;
         }
         return leftPointer;
     }
-
-    /**
-     * Swaps values of two array slots
-     */
-    private static void swap(int[] array, int index1, int index2) {
-        if (index1 == index2
-                || index1 > array.length - 1
-                || index2 > array.length - 1) {
-            return;
-        }
-
-        int temp = array[index1];
-        array[index1] = array[index2];
-        array[index2] = temp;
-    }
-
-    /**
-     * Checks if the array of integers is sorted.
-     */
-    private static boolean isIntArraySorted(int[] array) {
-        for (int i = 0; i < array.length - 1; i++) {
-            if (array[i] > array[i + 1]) {
-                return false;
-            }
-        }
-        return true;
-    }
-
 
 }
