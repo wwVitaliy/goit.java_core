@@ -2,7 +2,7 @@ package module4;
 
 import java.util.Arrays;
 
-public class ModifyArrayExample {
+public class ModifyArrayCheck {
     public static void main(String[] args) {
         String[] fruits = {
                 "apple",

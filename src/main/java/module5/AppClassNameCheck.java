@@ -1,6 +1,6 @@
 package module5;
 
-class ClassNameExample {
+class AppClassNameCheck {
     public static void main(String[] args) {
         TestClass testClass = new TestClass();
 
