@@ -4,7 +4,10 @@ import java.util.Objects;
 
 class ConstructorCheck {
     public static void main(String[] args) {
-        //
+
+        Parent testParent = new Parent("kim");  //OK, Parent is static
+        //Child testChild1 = new Child("Tim");  //Error, Child is not static
+
         ConstructorCheck constructorCheck = new ConstructorCheck();
 
         Child testChild1 = constructorCheck.new Child("Tim");
@@ -18,7 +21,7 @@ class ConstructorCheck {
                 + testChild2.getChildName());
     }
 
-    // Inner class
+    // Static inner class
     static class Parent {
         //Static initialization block. Execute whe the class is loaded
         static {
@@ -61,6 +64,7 @@ class ConstructorCheck {
         }
     }
 
+    //Non static inner class
     class Child extends Parent {
         //Initialization block. Executes before constructor.
         {
@@ -103,6 +107,5 @@ class ConstructorCheck {
                     '}';
         }
     }
-
 
 }
