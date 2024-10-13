@@ -1,4 +1,4 @@
-package module6;
+package module6.anonymousClasses;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;

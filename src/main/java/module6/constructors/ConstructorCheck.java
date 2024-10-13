@@ -1,4 +1,4 @@
-package module6;
+package module6.constructors;
 
 import java.util.Objects;
 

@@ -1,15 +1,20 @@
-package module6;
+package module6.anonymousClasses;
 
-class AnonymousClassCheck {
+ class AnonymousClassCheck {
     public static void main(String[] args) {
 
         Parent parent = new Parent("Tom") {
+
+            public String getParentName() {
+                return super.getParentName();
+            }
+
             public String getFunnyName() {
                 return "Tominator";
             }
         };
 
-        //Cannot call new method getFunnyName ()
+        //Cannot call new method getFunnyName()
         //System.out.println("parent.getParentName() = "+ parent.getFunnyName());
         System.out.println("parent.getClass() = " + parent.getClass());
 
@@ -21,7 +26,7 @@ class AnonymousClassCheck {
             }
         };
 
-        //Can call new method getFunnyName ()
+        //Can call new method getFunnyName()
         System.out.println("parentVar.getFunnyName() = " + parentVar.getFunnyName());
         System.out.println("parentVar.getClass() = " + parentVar.getClass());
 
