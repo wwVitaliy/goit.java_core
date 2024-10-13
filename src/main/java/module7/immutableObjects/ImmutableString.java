@@ -24,10 +24,33 @@ public class ImmutableString {
         System.out.println("fromString = " + Arrays.toString(fromString));
 
         //StringBuilder
+
+        long startMillis;
+        int limit = 100000;
+        String string = new String();
         StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < 100; i++) {
-            stringBuilder.append(i);
-            System.out.println(stringBuilder);
+
+        startMillis = System.currentTimeMillis();
+        for (int i = 0; i < limit; i++) {
+            string += i;
         }
+        System.out.println("TimeString: " + (System.currentTimeMillis() - startMillis));
+
+        startMillis = System.currentTimeMillis();
+        for (int i = 0; i < limit; i++) {
+            stringBuilder.append(i);
+        }
+        System.out.println("TimeStringBuilder: " + (System.currentTimeMillis() - startMillis));
+
+        //String pool
+        String someVar = "Hello";
+        String anotherVar = "Hello";
+        String newVar = new String("Hello");
+
+        System.out.println("someVar.equals(anotherVar) = " + someVar.equals(anotherVar));
+        System.out.println("someVar.equals(newVar) = " + someVar.equals(newVar));
+        System.out.println("someVar == anotherVar = " + someVar == anotherVar);
+        System.out.println("someVar == newVar = " + someVar == newVar);
+
     }
 }
