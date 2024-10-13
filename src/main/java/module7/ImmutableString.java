@@ -1,4 +1,4 @@
-package module7.immutableObjects;
+package module7;
 
 import java.util.Arrays;
 
