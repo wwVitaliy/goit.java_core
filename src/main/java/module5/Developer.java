@@ -9,6 +9,11 @@ class Developer extends Person{
         this.programingLanguage = programingLanguage;
     }
 
+    // static method cannot be @override
+    static void printHello(){
+        System.out.println("hello from Developer");
+    }
+
     public String getProgramingLanguage() {
         return programingLanguage;
     }

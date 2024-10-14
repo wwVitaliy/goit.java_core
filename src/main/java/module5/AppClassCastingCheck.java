@@ -11,6 +11,13 @@ public class AppClassCastingCheck {
         System.out.println("developerDev.getClass() = " + developerDev.getClass());
 
         Developer devFromPersonDev = (Developer) personDev;
+
+        System.out.println("========================");
+
+        Person.printHello();
+        Developer.printHello();
+
+
     }
 
 }

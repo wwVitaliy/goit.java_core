@@ -11,6 +11,10 @@ abstract class Person {
         this.age = age;
     }
 
+    static void printHello(){
+        System.out.println("Hello from Person");
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
