@@ -42,5 +42,5 @@ public class RemoveDuplicateInArray {
 
         return Arrays.copyOf(uniques, uniqueCount);
     }
-    
+
 }
