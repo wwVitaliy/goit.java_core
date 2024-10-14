@@ -3,7 +3,7 @@ package module7.mystringbuilder;
 import java.util.Arrays;
 import java.util.Random;
 
-public class RemoveDuplicateInArray {
+public class RemoveDuplicateFromArray {
 
     public static void main(String[] args) {
         Random random = new Random();
