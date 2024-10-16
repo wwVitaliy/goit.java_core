@@ -47,5 +47,5 @@ public enum DeveloperLevel {
         return false;
     }
 
-    
+
 }
