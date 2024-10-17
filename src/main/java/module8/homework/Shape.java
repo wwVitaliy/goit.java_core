@@ -8,7 +8,7 @@ public abstract class Shape
     private Color borderColor = new Color(0, 0, 0);
 
     public String getName() {
-        return name.isEmpty() ? "unnamed" : this.name;
+        return name.isEmpty() ? this.toString() : this.name;
     }
 
     public void setName(String name) {

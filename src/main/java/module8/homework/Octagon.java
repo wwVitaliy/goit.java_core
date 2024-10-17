@@ -42,4 +42,16 @@ public class Octagon
     public Point getF() {
         return f;
     }
+
+    @Override
+    public String toString() {
+        return "Octagon{" +
+                "a=" + a +
+                ", b=" + b +
+                ", c=" + c +
+                ", d=" + d +
+                ", e=" + e +
+                ", f=" + f +
+                '}';
+    }
 }

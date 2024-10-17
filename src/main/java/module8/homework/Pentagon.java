@@ -37,4 +37,15 @@ public class Pentagon
     public Point getE() {
         return e;
     }
+
+    @Override
+    public String toString() {
+        return "Pentagon{" +
+                "a=" + a +
+                ", b=" + b +
+                ", c=" + c +
+                ", d=" + d +
+                ", e=" + e +
+                '}';
+    }
 }

@@ -29,4 +29,13 @@ public class Point
     public void fill(Color color) {
         this.fillColor = color;
     }
+
+    @Override
+    public String toString() {
+        return "("
+                + x
+                + ", "
+                + y
+                + ')';
+    }
 }

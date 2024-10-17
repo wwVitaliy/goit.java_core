@@ -29,4 +29,14 @@ public class Rectangle
     public Point getD() {
         return d;
     }
+
+    @Override
+    public String toString() {
+        return "Rectangle{" +
+                "a=" + a +
+                ", b=" + b +
+                ", c=" + c +
+                ", d=" + d +
+                '}';
+    }
 }

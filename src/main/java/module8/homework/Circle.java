@@ -17,4 +17,12 @@ public class Circle
     public int getRadius() {
         return radius;
     }
+
+    @Override
+    public String toString() {
+        return "Circle{" +
+                "center=" + center +
+                ", radius=" + radius +
+                '}';
+    }
 }

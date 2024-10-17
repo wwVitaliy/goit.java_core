@@ -36,10 +36,19 @@ public class GraphicEditorTest {
         );
 
         ShapePrinter myPrinter = new ConsoleShapePrinter();
+
         myTriangle.printName(myPrinter);
+
         myCircle.setName("coolCircle");
         myCircle.printName(myPrinter);
+        myCircle.draw();
 
-        
+        myRectangle.printName(myPrinter);
+        myRectangle.draw();
+
+        myPentagon.printName(myPrinter);
+
+        myOctagon.printName(myPrinter);
+
     }
 }

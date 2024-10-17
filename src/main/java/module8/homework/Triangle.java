@@ -24,4 +24,13 @@ public class Triangle
     public Point getC() {
         return c;
     }
+
+    @Override
+    public String toString() {
+        return "Triangle{" +
+                "a=" + a +
+                ", b=" + b +
+                ", c=" + c +
+                '}';
+    }
 }
