@@ -1,22 +1,32 @@
 package module8.homework;
 
 public class Point
-        implements Nameble {
+        implements Drawable, Fillable {
     private int x;
     private int y;
+    private Color fillColor;
 
-    @Override
     public String getName() {
         return "(" + x + ", " + y + ")";
-    }
-
-    @Override
-    public void printName() {
-        //todo
     }
 
     public Point(int x, int y) {
         this.x = x;
         this.y = y;
+    }
+
+    @Override
+    public void draw() {
+        System.out.println(getName() + " was drew");
+    }
+
+    @Override
+    public Color getFillColor() {
+        return this.fillColor;
+    }
+
+    @Override
+    public void fill(Color color) {
+        this.fillColor = color;
     }
 }
