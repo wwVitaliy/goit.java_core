@@ -1,6 +1,6 @@
 package module8.homework;
 
-public class GraphicEditorTest {
+class GraphicEditorTest {
 
     public static void main(String[] args) {
         Circle myCircle = new Circle(new Point(1, 1), 10);
