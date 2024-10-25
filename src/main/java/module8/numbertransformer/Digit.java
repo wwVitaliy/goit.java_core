@@ -14,16 +14,20 @@ public enum Digit {
 
     private int value;
 
-    Digit (int value){
+    Digit(int value) {
         this.value = value;
     }
 
-    @Override
-    public String toString() {
-        return String.valueOf(this.value);
-    }
+//    @Override
+//    public String toString() {
+//        return String.valueOf(this.value);
+//    }
 
     public int getValue() {
         return this.value;
+    }
+
+    public static Digit valueOf(int digit) {
+        return Digit.values()[digit];
     }
 }
