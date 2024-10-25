@@ -20,6 +20,9 @@ public class SevenSegmentDigitPrinter
                     {" === ", "|| ||", " === ", "   ||", " === "},  //9
             };
 
+
+
+
     @Override
     public void print(Digit[] digits) {
 
