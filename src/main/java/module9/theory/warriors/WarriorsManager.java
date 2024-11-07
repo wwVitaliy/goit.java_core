@@ -1,4 +1,4 @@
-package module9.warriors;
+package module9.theory.warriors;
 
 import java.util.ArrayList;
 import java.util.List;
