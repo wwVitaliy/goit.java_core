@@ -20,6 +20,7 @@ class MyLinkedQueueTests {
         System.out.println("myLinkedQueue.size() = " + myLinkedQueue.size());
 
         System.out.println("\n=======>   poll();");
+        System.out.println("myLinkedQueue.size() = " + myLinkedQueue.size());
         System.out.println("myLinkedQueue.poll() = " + myLinkedQueue.poll());
         System.out.println("myLinkedQueue.size() = " + myLinkedQueue.size());
         System.out.println("myLinkedQueue.poll() = " + myLinkedQueue.poll());
@@ -46,7 +47,10 @@ class MyLinkedQueueTests {
             myLinkedQueue.poll();
         }
         System.out.println("myLinkedQueue.size() = " + myLinkedQueue.size());
-        
+
+        //перевірити чи по getValue можна змінити значення
+        myLinkedQueue.add("first");
+
 
     }
 }
