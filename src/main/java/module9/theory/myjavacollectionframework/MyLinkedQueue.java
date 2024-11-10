@@ -15,5 +15,29 @@ package module9.theory.myjavacollectionframework;
  * peek() повертає перший елемент з черги
  * poll() повертає перший елемент з черги і видаляє його з колекції
  */
-class MyLinkedQueue {
+class MyLinkedQueue<T> implements MyQueue<T> {
+    @Override
+    public T peek() {
+        return null;
+    }
+
+    @Override
+    public T poll() {
+        return null;
+    }
+
+    @Override
+    public int size() {
+        return 0;
+    }
+
+    @Override
+    public boolean add(T obj) {
+        return false;
+    }
+
+    @Override
+    public void clear() {
+
+    }
 }
