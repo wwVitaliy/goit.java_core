@@ -20,90 +20,76 @@ import java.util.StringJoiner;
  */
 class MyLinkedList<T> implements MyList<T> {
 
-    private static final String WRONG_INDEX_EX_TEXT = "Wrong index: ";
+    private static final String WRONG_INDEX_MESSAGE = "Wrong index!";
     private int size;
     private Node<T> firstNode;
     private Node<T> lastNode;
 
-    public Node<T> getFirstNode() {
-        return firstNode;
-    }
+    private static class Node<N> {
+        private N value;
+        private Node<N> next;
+        private Node<N> prev;
 
-    public Node<T> getLastNode() {
-        return lastNode;
-    }
-
-    static class Node<P> {
-        private P value;
-        private Node<P> next;
-        private Node<P> prev;
-
-        public Node(P value) {
+        public Node(N value) {
             this.value = value;
-            this.next = null;
             this.prev = null;
+            this.next = null;
         }
 
-        public Node(P value, Node<P> nextNode, Node<P> prevNode) {
+        public Node(N value, Node<N> next, Node<N> prev) {
             this.value = value;
-            this.next = nextNode;
-            this.prev = prevNode;
+            this.next = next;
+            this.prev = prev;
         }
 
-        public P getValue() {
+        public N getValue() {
             return value;
         }
 
-        public void setValue(P value) {
+        public void setValue(N value) {
             this.value = value;
         }
 
-        public Node<P> getNext() {
+        public Node<N> getNext() {
             return next;
         }
 
-        public void setNext(Node<P> next) {
+        public void setNext(Node<N> next) {
             this.next = next;
         }
 
-        public Node<P> getPrev() {
+        public Node<N> getPrev() {
             return prev;
         }
 
-        public void setPrev(Node<P> prev) {
+        public void setPrev(Node<N> prev) {
             this.prev = prev;
         }
-    }
 
-    @Override
-    public boolean add(T value) {
-        Node<T> nodeToAdd = new Node<>(value);
-
-        if (this.firstNode == null) {
-            this.firstNode = nodeToAdd;
-        } else if (this.lastNode == null) {
-            this.lastNode = nodeToAdd;
-            this.firstNode.setNext(this.lastNode);
-            this.lastNode.setPrev(firstNode);
-        } else {
-            this.lastNode.setNext(nodeToAdd);
-            nodeToAdd.setPrev(lastNode);
+        @Override
+        public String toString() {
+            return "Node{" +
+                    value +
+                    ", " + (next == null ? "null" : "next") +
+                    ", " + (prev == null ? "null" : "prev") +
+                    '}';
         }
-        size++;
-
-        return true;
     }
+
 
     @Override
     public T get(int index) {
         try {
-            if (!isIndexInBound(index)) throw new IndexOutOfBoundsException(WRONG_INDEX_EX_TEXT + index);
-        }catch (IndexOutOfBoundsException e){
-            System.out.println(e.getMessage());
+            if (isWrongIndex(index)) throw new IndexOutOfBoundsException(WRONG_INDEX_MESSAGE);
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("e.getMessage() = " + e.getMessage());
             return null;
         }
 
-        Node<T> pointer = firstNode;
+        if (index == 0) return this.firstNode.getValue();
+        if (index == this.size - 1) return this.lastNode.getValue();
+
+        Node<T> pointer = this.firstNode;
         for (int i = 0; i < index; i++) {
             pointer = pointer.getNext();
         }
@@ -111,41 +97,40 @@ class MyLinkedList<T> implements MyList<T> {
         return pointer.getValue();
     }
 
-    private boolean isIndexInBound(int index) {
-        return index >= 0 && index < this.size();
+    private boolean isWrongIndex(int index) {
+        return index < 0 || index > this.size - 1;
     }
 
     @Override
     public T remove(int index) {
         try {
-            if (!isIndexInBound(index)) throw new IndexOutOfBoundsException(WRONG_INDEX_EX_TEXT + index);
-        }catch (IndexOutOfBoundsException e){
-            System.out.println(e.getMessage());
+            if (isWrongIndex(index)) throw new IndexOutOfBoundsException(WRONG_INDEX_MESSAGE);
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("e.getMessage() = " + e.getMessage());
             return null;
         }
-
-        if (size == 1) {
-            clear();
-        }
         T result;
-        if (index == 0) {
-            result = firstNode.getValue();
-            firstNode = firstNode.getNext();
-            firstNode.setPrev(null);
-        } else if (index == size - 1) {
-            result = lastNode.getValue();
-            lastNode = lastNode.getPrev();
-            lastNode.setNext(null);
+        if (this.size == 1) {
+            result = this.firstNode.getValue();
+            clear();
+        } else if (index == 0) {
+            result = this.firstNode.getValue();
+            this.firstNode = this.firstNode.getNext();
+            this.firstNode.setPrev(null);
+        } else if (index == this.size - 1) {
+            result = this.lastNode.getValue();
+            this.lastNode = lastNode.getPrev();
+            this.lastNode.setNext(null);
         } else {
             Node<T> pointer = firstNode;
             for (int i = 0; i < index; i++) {
                 pointer = pointer.getNext();
             }
             result = pointer.getValue();
-            pointer.getPrev().setNext(pointer.getNext());
             pointer.getNext().setPrev(pointer.getPrev());
+            pointer.getPrev().setNext(pointer.getNext());
+
         }
-        size--;
         return result;
     }
 
@@ -155,25 +140,42 @@ class MyLinkedList<T> implements MyList<T> {
     }
 
     @Override
+    public boolean add(T obj) {
+        if (this.firstNode == null) {
+            this.firstNode = new Node<>(obj);
+            this.lastNode = this.firstNode;
+        } else {
+            Node<T> nodeToAdd = new Node<>(obj, null, this.lastNode);
+            this.lastNode.setNext(nodeToAdd);
+            this.lastNode = nodeToAdd;
+        }
+        size++;
+        return false;
+    }
+
+    @Override
     public void clear() {
-        firstNode = null;
-        lastNode = null;
-        size = 0;
+        this.firstNode = null;
+        this.lastNode = null;
+        this.size = 0;
     }
 
     @Override
     public String toString() {
-        if (firstNode == null) return "MyLinkedList{}";
+        if (this.firstNode == null) return "MyLinkedList{}";
 
-        StringJoiner sj = new StringJoiner(", ");
-        Node<T> lastNode = firstNode;
-        sj.add(lastNode.getValue().toString());
-        while (lastNode.getNext() != null) {
-            lastNode = lastNode.getNext();
-            sj.add(lastNode.getValue().toString());
+        StringJoiner stringJoiner = new StringJoiner(", ");
+
+        Node<T> pointer = this.firstNode;
+        stringJoiner.add(pointer.getValue().toString());
+
+        while (pointer.getNext() != null) {
+            pointer = pointer.getNext();
+            stringJoiner.add(pointer.getValue().toString());
         }
-        return "MyLinkedList{"
-                + sj
-                + '}';
+
+        return "MyLinkedList{" +
+                stringJoiner +
+                '}';
     }
 }
