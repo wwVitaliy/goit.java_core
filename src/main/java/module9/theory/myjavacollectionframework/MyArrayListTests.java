@@ -1,10 +1,9 @@
 package module9.theory.myjavacollectionframework;
 
 
-class MyJavaCollectionFrameworkTests {
+class MyArrayListTests {
     public static void main(String[] args) {
         System.out.println("======> MyArrayListTests");
-
 
         System.out.println("\n===> new myArrayList(); test:");
         MyList<String> myArrayList = new MyArrayList<>();
@@ -39,12 +38,16 @@ class MyJavaCollectionFrameworkTests {
         myArrayList.remove(1);
         System.out.println("myArrayList = " + myArrayList);
 
-
-
         System.out.println("\n===> clear(); test:");
         System.out.println("myArrayList = " + myArrayList);
         myArrayList.clear();
         System.out.println("myArrayList = " + myArrayList);
+
+        System.out.println("\n===> big size test:");
+        for (int i = 0; i < 1000000; i++) {
+            myArrayList.add("" + i);
+        }
+        System.out.println("myArrayList.size() = " + myArrayList.size());
     }
 
 }
