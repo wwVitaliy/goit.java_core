@@ -48,9 +48,5 @@ class MyLinkedQueueTests {
         }
         System.out.println("myLinkedQueue.size() = " + myLinkedQueue.size());
 
-        //перевірити чи по getValue можна змінити значення
-        myLinkedQueue.add("first");
-
-
     }
 }
