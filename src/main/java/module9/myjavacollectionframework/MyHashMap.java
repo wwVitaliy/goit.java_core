@@ -1,8 +1,6 @@
 package module9.myjavacollectionframework;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * Завдання 5 - HashMap
@@ -22,19 +20,24 @@ import java.util.Objects;
  */
 class MyHashMap<K, V> implements MyMap<K, V> {
 
-    private static final int INIT_BUCKET_QTY = 16;
+    private static final int INIT_BUCKET_QTY = 2;
     private int bucketQty;
     private int size;
     MyBucketLinkedList<K, V>[] buckets;
 
     public MyHashMap() {
         bucketQty = INIT_BUCKET_QTY;
-        this.buckets = new MyBucketLinkedList[bucketQty];
-        createBuckets(this.buckets);
+        this.buckets = createBucketsArray(bucketQty);
         this.size = 0;
     }
 
-    private void createBuckets(MyBucketLinkedList<K, V>[] buckets) {
+    private MyBucketLinkedList<K, V>[] createBucketsArray(int size) {
+        MyBucketLinkedList<K, V>[] buckets = new MyBucketLinkedList[size];
+        createLists(buckets);
+        return buckets;
+    }
+
+    private void createLists(MyBucketLinkedList<K, V>[] buckets) {
         for (int i = 0; i < buckets.length; i++) {
             buckets[i] = new MyBucketLinkedList<>();
         }
@@ -47,18 +50,39 @@ class MyHashMap<K, V> implements MyMap<K, V> {
 
     @Override
     public void clear() {
-        this.buckets = new MyBucketLinkedList[INIT_BUCKET_QTY];
-        createBuckets(this.buckets);
+        this.bucketQty = INIT_BUCKET_QTY;
+        this.buckets = createBucketsArray(this.bucketQty);
         this.size = 0;
     }
 
     @Override
     public V put(K key, V value) {
         int bucketNumber = getBucketNumber(key);
-        int bucketSizeBeforeAdding = this.buckets[bucketNumber].size();
+        if (this.buckets[bucketNumber].size() >= this.bucketQty) {
+            redistributeElements();
+            return this.put(key, value);
+        }
         V result = this.buckets[bucketNumber].add(key, value);
-        if (this.buckets[bucketNumber].size() > bucketSizeBeforeAdding) size++;
+        if (result == null) {
+            size++;
+        }
         return result;
+    }
+
+    private void redistributeElements() {
+        MyBucketLinkedList<K, V>[] oldBuckets = this.buckets;
+
+        this.bucketQty *= 2;
+        this.buckets = createBucketsArray(this.bucketQty);
+        this.size = 0;
+
+        for (int i = 0; i < oldBuckets.length; i++) {
+            while (oldBuckets[i].size() != 0) {
+                K keyToDistribute = oldBuckets[i].getFirstKey();
+                this.put(keyToDistribute, oldBuckets[i].remove(keyToDistribute));
+            }
+        }
+
     }
 
     private int getBucketNumber(K key) {
@@ -86,4 +110,6 @@ class MyHashMap<K, V> implements MyMap<K, V> {
                 + Arrays.toString(buckets)
                 + '}';
     }
+
+
 }
