@@ -1,7 +1,6 @@
 package module9.myjavacollectionframework;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Objects;
 
 /**
@@ -22,7 +21,7 @@ import java.util.Objects;
  */
 class MyHashMap<K, V> implements MyMap<K, V> {
 
-    private static final int INIT_BUCKET_QTY = 16;
+    private static final int INIT_BUCKET_QTY = 3;
     private int bucketQty;
     private int size;
     MyBucketLinkedList<K, V>[] buckets;
@@ -47,7 +46,8 @@ class MyHashMap<K, V> implements MyMap<K, V> {
 
     @Override
     public void clear() {
-        this.buckets = new MyBucketLinkedList[INIT_BUCKET_QTY];
+        this.bucketQty = INIT_BUCKET_QTY;
+        this.buckets = new MyBucketLinkedList[this.bucketQty];
         createBuckets(this.buckets);
         this.size = 0;
     }
@@ -57,9 +57,42 @@ class MyHashMap<K, V> implements MyMap<K, V> {
         int bucketNumber = getBucketNumber(key);
         int bucketSizeBeforeAdding = this.buckets[bucketNumber].size();
         V result = this.buckets[bucketNumber].add(key, value);
-        if (this.buckets[bucketNumber].size() > bucketSizeBeforeAdding) size++;
+        if (this.buckets[bucketNumber].size() > bucketSizeBeforeAdding) {
+            size++;
+            if (this.buckets[bucketNumber].size() > bucketQty) {
+                increaseBuckets();
+            }
+        }
         return result;
     }
+
+    private void increaseBuckets() {
+        MyBucketLinkedList<K, V>[] newBuckets = createNewBuckets();
+        updateBuckets(buckets, newBuckets);
+
+    }
+
+    private void updateBuckets(MyBucketLinkedList<K, V>[] buckets, MyBucketLinkedList<K, V>[] newBuckets) {
+        this.buckets = newBuckets;
+        this.size = 0;
+        this.bucketQty = buckets.length;
+
+        for (int i = 0; i < buckets.length; i++) {
+            while (buckets[i].size() != 0) {
+                K key = buckets[i].getFirstKey();
+                this.put(key, buckets[i].get(key));
+                buckets[i].remove(key);
+            }
+
+        }
+    }
+
+    private MyBucketLinkedList<K, V>[] createNewBuckets() {
+        MyBucketLinkedList<K, V>[] newBuckets = new MyBucketLinkedList[this.size * 2];
+        createBuckets(newBuckets);
+        return newBuckets;
+    }
+
 
     private int getBucketNumber(K key) {
         return Math.abs(Objects.hash(key) % this.bucketQty);

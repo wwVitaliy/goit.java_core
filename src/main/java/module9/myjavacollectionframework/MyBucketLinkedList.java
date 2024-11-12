@@ -44,6 +44,13 @@ class MyBucketLinkedList<K, V> {
         return null;
     }
 
+    public K getFirstKey() {
+        if (this.firstNode != null) {
+            return this.firstNode.getKey();
+        }
+        return null;
+    }
+
     public V remove(K key) {
         Node<K, V> pointer = this.firstNode;
         Node<K, V> prevNode = null;
