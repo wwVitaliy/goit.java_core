@@ -1,4 +1,4 @@
-package module9.theory.myjavacollectionframework;
+package module9.myjavacollectionframework;
 
 interface MyStack<T> extends MyCollection<T> {
     T remove(int index);

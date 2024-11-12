@@ -1,4 +1,4 @@
-package module9.theory.myjavacollectionframework;
+package module9.myjavacollectionframework;
 
 /**
  * Завдання 5 - HashMap
@@ -19,7 +19,7 @@ package module9.theory.myjavacollectionframework;
 interface MyMap<K,V> {
     int size();
     void clear();
-    boolean put (K key, V value);
+    V put (K key, V value);
     V remove(K key);
     V get (K key);
 }

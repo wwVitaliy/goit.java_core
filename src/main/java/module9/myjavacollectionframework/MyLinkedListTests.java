@@ -1,4 +1,4 @@
-package module9.theory.myjavacollectionframework;
+package module9.myjavacollectionframework;
 
 class MyLinkedListTests {
     public static void main(String[] args) {

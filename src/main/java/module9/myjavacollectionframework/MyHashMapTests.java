@@ -1,4 +1,4 @@
-package module9.theory.myjavacollectionframework;
+package module9.myjavacollectionframework;
 
 class MyHashMapTests {
     public static void main(String[] args) {
@@ -27,7 +27,7 @@ class MyHashMapTests {
         System.out.println("myHashMap.size() = " + myHashMap.size());
         System.out.println("myHashMap = " + myHashMap);
 
-        System.out.println("myHashMap.pop() = " + myHashMap.remove("First"));
+        System.out.println("myHashMap.remove() = " + myHashMap.remove("first"));
         System.out.println("myHashMap.size() = " + myHashMap.size());
         System.out.println("myHashMap = " + myHashMap);
 
@@ -43,7 +43,7 @@ class MyHashMapTests {
 
         System.out.println("\n=======>   big amount of data");
         System.out.println("myHashMap.size() = " + myHashMap.size());
-        for (int i = 0; i < 1000000; i++) {
+        for (int i = 0; i < 100000; i++) {
             myHashMap.put("" + i, i);
         }
         System.out.println("myHashMap.size() = " + myHashMap.size());
