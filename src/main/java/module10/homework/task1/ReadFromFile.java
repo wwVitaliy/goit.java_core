@@ -1,4 +1,4 @@
-package module10.homework;
+package module10.homework.task1;
 
 import java.io.File;
 import java.io.FileReader;
@@ -38,7 +38,7 @@ import java.util.regex.Pattern;
  */
 class ReadFromFile {
 
-    private static final String FILE_PATH = "src/main/java/module10/homework/file.txt";
+    private static final String FILE_PATH = "src/main/java/module10/homework/task1/file.txt";
 
     public static void main(String[] args) throws IOException {
 
