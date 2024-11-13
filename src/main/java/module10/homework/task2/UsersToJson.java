@@ -39,7 +39,7 @@ import java.util.Scanner;
  * }
  * ]
  */
-class CreateUserFromFIle {
+class UsersToJson {
     private static final String PATH_FROM = "src/main/java/module10/homework/task2/file.txt";
     private static final String PATH_TO = "src/main/java/module10/homework/task2/user.json";
 
