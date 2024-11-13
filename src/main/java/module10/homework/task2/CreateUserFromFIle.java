@@ -1,8 +1,8 @@
 package module10.homework.task2;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import com.google.gson.Gson;
+
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -40,18 +40,28 @@ import java.util.Scanner;
  * ]
  */
 class CreateUserFromFIle {
-    private static final String FILE_PATH = "src/main/java/module10/homework/task2/file.txt";
+    private static final String PATH_FROM = "src/main/java/module10/homework/task2/file.txt";
+    private static final String PATH_TO = "src/main/java/module10/homework/task2/user.json";
 
     private record User(String name, int age) {
     }
 
     public static void main(String[] args) {
+        File fileFrom = new File(PATH_FROM);
+        File fileTo = new File(PATH_TO);
 
-        File file = new File(FILE_PATH);
+        List<User> users = createUsersFromFile(fileFrom);
 
-        List<User> users = createUsersFromFile(file);
-        System.out.println(users);
+        try (FileOutputStream fos = new FileOutputStream(fileTo)) {
+            fos.write(usersToJson(users).getBytes());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
+    private static String usersToJson(List<User> users) {
+        Gson gson = new Gson().newBuilder().setPrettyPrinting().create();
+        return gson.toJson(users);
     }
 
     private static List<User> createUsersFromFile(File file) {
