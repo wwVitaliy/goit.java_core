@@ -82,7 +82,6 @@ class MyHashMap<K, V> implements MyMap<K, V> {
                 this.put(keyToDistribute, oldBuckets[i].remove(keyToDistribute));
             }
         }
-
     }
 
     private int getBucketNumber(K key) {

@@ -90,13 +90,6 @@ class MyBucketLinkedList<K, V> {
         return this.size;
     }
 
-    public K getFirstKey() {
-        if (this.firstNode != null) {
-            return this.firstNode.getKey();
-        }
-        return null;
-    }
-
     private static class Node<K, V> {
 
         private K key;
