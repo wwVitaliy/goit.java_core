@@ -19,7 +19,7 @@ class MyBucketLinkedList<K, V> {
             pointer = pointer.getNextNode();
         }
         attachNewNodeToTheEnd(key, value);
-        size++;
+        this.size++;
         return null;
     }
 
@@ -88,6 +88,13 @@ class MyBucketLinkedList<K, V> {
 
     public int size() {
         return this.size;
+    }
+
+    public K getFirstKey() {
+        if (this.firstNode != null) {
+            return this.firstNode.getKey();
+        }
+        return null;
     }
 
     private static class Node<K, V> {
