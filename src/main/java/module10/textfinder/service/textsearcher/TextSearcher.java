@@ -1,5 +1,5 @@
 package module10.textfinder.service.textsearcher;
 
-interface TextSearcher {
+public interface TextSearcher {
     boolean search(String context, String search);
 }

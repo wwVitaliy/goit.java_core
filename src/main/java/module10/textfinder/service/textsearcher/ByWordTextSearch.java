@@ -1,6 +1,6 @@
 package module10.textfinder.service.textsearcher;
 
-class ByWordTextSearch implements TextSearcher {
+public class ByWordTextSearch implements TextSearcher {
 
 
     @Override
