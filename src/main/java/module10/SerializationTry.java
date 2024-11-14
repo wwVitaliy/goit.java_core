@@ -3,7 +3,7 @@ package module10;
 import java.io.*;
 
 class SerializationTry {
-    private static final String MODULE_10_THEORY = "src/main/java/module10/theory/";
+    private static final String MODULE_10_THEORY = "src/main/java/module10/";
     private static final String PATH_TO = MODULE_10_THEORY + "seriliazationTry.dat";
     private static final String PATH_FROM = MODULE_10_THEORY + "seriliazationTry.dat";
 
