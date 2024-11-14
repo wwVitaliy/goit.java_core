@@ -1,8 +1,13 @@
 package module11;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.StringJoiner;
+import java.util.function.BinaryOperator;
+import java.util.function.Predicate;
+import java.util.function.UnaryOperator;
+
 
 class LambdaTry {
 
@@ -21,7 +26,7 @@ class LambdaTry {
     }
 
     @FunctionalInterface
-    interface SayableTwoParam{
+    interface SayableTwoParam {
         public String say(String sayFirst, String saySecond);
     }
 
@@ -32,8 +37,40 @@ class LambdaTry {
 //        lambdaOneParam();
 //        lambdaTwoParam();
 //        lambdaComplexLogic();
-        lambdaForEach();
+//        lambdaForEach();
+
+        //  Task1.  Write a Java program to implement a lambda expression to find the sum of two integers.
+        int a = 1;
+        int b = 3;
+        System.out.println("task1(a, b) = " + task1(a, b));
+
+        //  Task2.  Write a Java program to implement a lambda expression to check if a given string is empty.
+        String texToCheck = " 1";
+        System.out.println("task2(texToCheck) = " + task2(texToCheck));
+
+        //  Task3.  Write a Java program to implement a lambda expression to convert a list of strings to uppercase.
+        List<String> myList = Arrays.asList("text", "lambda", "UPPERcase");
+        myList.replaceAll(String::toUpperCase);
+        System.out.println("task3(myList) = " + myList);
+
+        //  Task4.  Write a Java program to implement a lambda expression to print odd numbers from the list
+        List<Integer> integers = Arrays.asList(0, 1, 2, 3, 4, 5);
+        integers.forEach((n) -> {
+            if (n % 2 == 0) System.out.println(n);
+        });
+
     }
+
+    private static boolean task2(String texToCheck) {
+        Predicate<String> isBlank = String::isBlank;
+        return isBlank.test(texToCheck);
+    }
+
+    private static int task1(int a, int b) {
+        BinaryOperator<Integer> sum = (num1, num2) -> num1 + num2;
+        return sum.apply(a, b);
+    }
+
 
     private static void lambdaForEach() {
         List<String> names = new ArrayList<>();
@@ -67,7 +104,7 @@ class LambdaTry {
     }
 
     private static void lambdaTwoParam() {
-        SayableTwoParam mySayableTwoParam = (a , b) -> "Said: " + a + " " + b;
+        SayableTwoParam mySayableTwoParam = (a, b) -> "Said: " + a + " " + b;
 
         System.out.println("mySayableTwoParam.say(\"Hello!\", \"How are you?\") = " + mySayableTwoParam.say("Hello!", "How are you?"));
     }
