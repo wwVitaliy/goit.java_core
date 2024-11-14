@@ -1,4 +1,4 @@
-package module9.theory.warriors;
+package module9.warriors;
 
 abstract class Warrior {
    int power;

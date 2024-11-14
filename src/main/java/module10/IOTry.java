@@ -1,4 +1,4 @@
-package module10.theory;
+package module10;
 
 import java.io.*;
 import java.util.Arrays;

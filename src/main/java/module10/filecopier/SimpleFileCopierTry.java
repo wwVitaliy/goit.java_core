@@ -1,4 +1,4 @@
-package module10.theory.FileCopier;
+package module10.filecopier;
 
 import java.io.File;
 import java.io.IOException;

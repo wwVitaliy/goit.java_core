@@ -1,4 +1,4 @@
-package module9.theory.warriors;
+package module9.warriors;
 
 public class Fighter
         extends Warrior {

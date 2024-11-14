@@ -1,0 +1,23 @@
+/g Interfaces
+	<<FileScanner>>:class
+		Collection<File> scan(File base);
+	<<FileContentReader>>:class
+		String read(File file);
+	<<TextSearcher>>:class
+		boolean search(String content, String search);
+
+
+/g implementation
+	RecursiveFIleScanner:class-.-><<FileScanner>>
+	ScannerFileReader:class-.-><<FileContentReader>>
+	SimpleTextSearcher:class-.-><<TextSearcher>>
+
+/g application
+	Start:oval
+	SearchEngine:class
+
+Start-->SearchEngine
+
+SearchEngine--RecursiveFIleScanner
+SearchEngine--ScannerFileReader
+SearchEngine--SimpleTextSearcher

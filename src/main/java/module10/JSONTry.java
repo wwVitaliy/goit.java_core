@@ -1,9 +1,6 @@
-package module10.theory;
+package module10;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
-import java.io.Serializable;
 
 class JSONTry {
     private record Person(String name, int age, double height, boolean married) {

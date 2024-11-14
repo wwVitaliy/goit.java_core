@@ -1,9 +1,8 @@
-package module9.theory;
+package module9;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
 
 class GenericTest<T, K extends Number> {
