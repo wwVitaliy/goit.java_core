@@ -1,4 +1,7 @@
-/g Interfaces
+/g Controller
+	Start:oval
+
+/g Interface
 	<<FileScanner>>:class
 		Collection<File> scan(File base);
 	<<FileContentReader>>:class
@@ -6,18 +9,20 @@
 	<<TextSearcher>>:class
 		boolean search(String content, String search);
 
-
-/g implementation
+/g Implementation
 	RecursiveFIleScanner:class-.-><<FileScanner>>
 	CharISFileReader:class-.-><<FileContentReader>>
 	SimpleTextSearcher:class-.-><<TextSearcher>>
+	ByWordTextSearcher:class-.-><<TextSearcher>>
 
-/g application
-	Start:oval
+/g Services
+	Implementation
+	Interface
 	SearchEngine:class
+		void findAndPrint(FIle root, String search);
 
 Start-->SearchEngine
 
 SearchEngine--RecursiveFIleScanner
 SearchEngine--CharISFileReader
-SearchEngine--SimpleTextSearcher
+SearchEngine--ByWordTextSearcher
