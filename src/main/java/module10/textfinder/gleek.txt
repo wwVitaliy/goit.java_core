@@ -9,7 +9,7 @@
 
 /g implementation
 	RecursiveFIleScanner:class-.-><<FileScanner>>
-	ScannerFileReader:class-.-><<FileContentReader>>
+	CharISFileReader:class-.-><<FileContentReader>>
 	SimpleTextSearcher:class-.-><<TextSearcher>>
 
 /g application
@@ -19,5 +19,5 @@
 Start-->SearchEngine
 
 SearchEngine--RecursiveFIleScanner
-SearchEngine--ScannerFileReader
+SearchEngine--CharISFileReader
 SearchEngine--SimpleTextSearcher
