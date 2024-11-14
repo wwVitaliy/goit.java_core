@@ -8,12 +8,12 @@ class FileScannerTests {
 
     public static void main(String[] args) {
         FileScanner fileScanner = new RecursiveFileScanner();
-
         File root = new File(ROOT);
+
         Collection<File> filesFromRoot = fileScanner.scan(root);
+
         for (File file : filesFromRoot) {
             System.out.println(file);
         }
-
     }
 }
