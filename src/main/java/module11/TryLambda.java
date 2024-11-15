@@ -6,10 +6,9 @@ import java.util.List;
 import java.util.StringJoiner;
 import java.util.function.BinaryOperator;
 import java.util.function.Predicate;
-import java.util.function.UnaryOperator;
 
 
-class LambdaTry {
+class TryLambda {
 
     interface Printable {
         public void print(int a);
