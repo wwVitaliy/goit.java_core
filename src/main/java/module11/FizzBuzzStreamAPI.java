@@ -14,17 +14,20 @@ class FizzBuzzStreamAPI {
     public static void main(String[] args) {
         int n = 100;
         IntStream.range(0, n)
-                .mapToObj(FizzBuzzStreamAPI::fizzBuzz)
+              //  .mapToObj(FizzBuzzStreamAPI::fizzBuzz)
+                .mapToObj(e ->{
+                    String result = "";
+                    if (e % 3 == 0) result += "Fizz";
+                    if (e % 5 == 0) result += "Buzz";
+                    return result.isBlank() ? e : result;
+                })
                 .forEach(System.out::println);
     }
 
     private static String fizzBuzz(int i) {
         String result = "";
-
         if (i % 3 == 0) result += "Fizz";
-        if (i % 3 == 0) result += "Buzz";
-        if (result.isBlank()) result += i;
-
-        return result;
+        if (i % 5 == 0) result += "Buzz";
+        return result.isBlank() ? String.valueOf(i) : result;
     }
 }
