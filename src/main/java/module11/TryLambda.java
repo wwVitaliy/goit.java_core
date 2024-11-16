@@ -1,9 +1,6 @@
 package module11;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.StringJoiner;
+import java.util.*;
 import java.util.function.BinaryOperator;
 import java.util.function.Predicate;
 
@@ -58,6 +55,22 @@ class TryLambda {
             if (n % 2 == 0) System.out.println(n);
         });
 
+        //  Task5.  Write a Java program to implement a lambda expression to sort a list of strings in alphabetical order.
+        List<String> list = List.of("text", "a", "lambda", "uPPERcase");
+        List<String> sortedList = list.stream()
+                .sorted(String::compareToIgnoreCase)
+                .toList();
+        System.out.println("sortedList = " + sortedList);
+
+        // Task 6. Write a Java program to implement a lambda expression to find the average of a list of doubles.
+        List<Double> listOfDoubles = List.of(1d, 2d,0d, 0.5d, -1d);
+        OptionalDouble average = listOfDoubles.stream()
+                .mapToDouble(d -> d)
+                .average();
+        System.out.println("average = " + average.getAsDouble());
+
+        // Task8. Write a lambda expression to implement a lambda expression to calculate the factorial of a given number.
+        
     }
 
     private static boolean task2(String texToCheck) {
