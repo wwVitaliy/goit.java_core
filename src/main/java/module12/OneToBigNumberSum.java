@@ -49,6 +49,7 @@ class OneToBigNumberSum {
         System.out.println("duration one thread, ms = " + duration);
 
         //  multi-threads way
+
         start = System.currentTimeMillis();
         result = multiThreadsCalculation();
         duration = System.currentTimeMillis() - start;

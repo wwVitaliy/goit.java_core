@@ -34,6 +34,7 @@ class Task2 {
 
         });
 
+
         // Create thread B to check if number is Buzz
         Thread threadB = new Thread(()->{
 
