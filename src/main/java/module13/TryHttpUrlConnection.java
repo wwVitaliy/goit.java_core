@@ -3,7 +3,11 @@ package module13;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
+import java.net.URI;
 import java.net.URL;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Scanner;
@@ -16,9 +20,13 @@ public class TryHttpUrlConnection {
     public static final String USER_JSON_2 = "src/main/java/module13/user2.json";
 
     public static void main(String[] args) throws IOException {
+        //  HttpUrlConnection
 //        sendGET();
-        sendPut();
+//        sendPut();
+
     }
+
+
 
     private static void sendPut() throws IOException {
         // create URL object
