@@ -1,0 +1,23 @@
+{
+  "id": 2,
+  "name": "Maverick Believer",
+  "username": "Mav",
+  "email": "maverick@beliver.com",
+  "address": {
+    "street": "Green str",
+    "suite": "Apt. 777",
+    "city": "Gothem",
+    "zipcode": "92998-3874",
+    "geo": {
+      "lat": "-50.3647",
+      "lng": "72.2648"
+    }
+  },
+  "phone": "1-770-736-8031",
+  "website": "hildegard.org",
+  "company": {
+    "name": "Magi",
+    "catchPhrase": "Magi-magi",
+    "bs": "e-market"
+  }
+}
