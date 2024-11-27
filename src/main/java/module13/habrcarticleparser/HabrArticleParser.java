@@ -1,4 +1,4 @@
-package module13;
+package module13.habrcarticleparser;
 
 import org.jsoup.nodes.Element;
 

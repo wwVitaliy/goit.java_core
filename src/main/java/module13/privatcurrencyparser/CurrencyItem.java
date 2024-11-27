@@ -7,7 +7,6 @@ public record CurrencyItem(
         float sale
 ) {
 
-
     public CurrencyItem(CCY ccy, float buy, float sale) {
         this(ccy, CCY.UAH, buy, sale);
     }

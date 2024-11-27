@@ -9,7 +9,7 @@ public class CurrencyPrivatParser {
     private static final String PRIVAT_API = "https://api.privatbank.ua/p24api/pubinfo?exchange&coursid=5";
     private static final Gson GSON = new Gson().newBuilder().setPrettyPrinting().create();
 
-    public float getBuyRate(CCY ccy){
+    public float getBuyRate(CCY ccy) {
         try {
             String text = Jsoup.connect(PRIVAT_API)
                     .ignoreContentType(true)
@@ -19,7 +19,7 @@ public class CurrencyPrivatParser {
 
             CurrencyItem[] currencyItems = GSON.fromJson(text, CurrencyItem[].class);
             for (CurrencyItem currencyItem : currencyItems) {
-                if (currencyItem.ccy().equals(ccy)){
+                if (currencyItem.ccy().equals(ccy)) {
                     return currencyItem.buy();
                 }
             }
@@ -29,7 +29,7 @@ public class CurrencyPrivatParser {
         return -1F;
     }
 
-    public float getSaleRate(CCY ccy){
+    public float getSaleRate(CCY ccy) {
         try {
             String text = Jsoup.connect(PRIVAT_API)
                     .ignoreContentType(true)
@@ -39,7 +39,7 @@ public class CurrencyPrivatParser {
 
             CurrencyItem[] currencyItems = GSON.fromJson(text, CurrencyItem[].class);
             for (CurrencyItem currencyItem : currencyItems) {
-                if (currencyItem.ccy().equals(ccy)){
+                if (currencyItem.ccy().equals(ccy)) {
                     return currencyItem.sale();
                 }
             }
@@ -48,7 +48,5 @@ public class CurrencyPrivatParser {
         }
         return -1F;
     }
-
-
 }
 
