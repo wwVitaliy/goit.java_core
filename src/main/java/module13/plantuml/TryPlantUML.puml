@@ -1,0 +1,14 @@
+@startuml
+
+class Person{
+    - String name
+    + String getName()
+
+}
+
+class School
+
+School --> Person
+
+
+@enduml
